@@ -20,7 +20,6 @@ public class SelectionSort {
         return elements;
     }
 
-
     // PART B. sorting a 1000-word list
     public static ArrayList<String> selectionSortWordList(ArrayList<String> words) {
         for (int i = 0; i < words.size(); i ++) {

@@ -10,6 +10,7 @@ public class InsertionSort {
     public static int[] insertionSort(int[] elements) {
         int tempNum = 0;
         int tempVal = 0;
+        int totalLoop = 0;
        for (int i = 1; i < elements.length; i++) {
         tempNum = i;
         tempVal = elements[i];
@@ -24,24 +25,40 @@ public class InsertionSort {
              } else if (elements[tempNum - 1] == tempVal) {
                 tempNum -= 1;
              }
+             totalLoop++;
         }
        }
+       System.out.println(totalLoop);
         return elements;
     }
 
-   
-    public static void selectionSort(int[] elements) {
-    
-    }
+    public static int[] selectionSort(int[] elements) {
+        int totalLoop = 0;
+        for (int i = 0; i < elements.length; i ++) {
+         for (int j = i + 1; j < elements.length; j ++) {
+            totalLoop ++;
+             if (elements[j] < elements[i]) {
+                 int temp = elements[i];
+                 elements[i] = elements[j];
+                 elements[j] = temp;
+             }
+         }
+        }
+        System.out.println(totalLoop);
+        return elements;
+     }
+ 
 
     // PART B. sorting a 1000-word list
     public static ArrayList<String> insertionSortWordList(ArrayList<String> words) {
         int tempNum = 0;
         String tempVal = "";
+        int totalLoop = 0;
        for (int i = 1; i < words.size(); i++) {
         tempNum = i;
         tempVal = words.get(i);
         while (tempNum > 0) {
+            totalLoop ++;
              if (words.get(tempNum - 1).compareTo(tempVal) > 0) {
                 words.set(tempNum, words.get(tempNum - 1));
                 words.set(tempNum - 1, tempVal);
@@ -54,11 +71,24 @@ public class InsertionSort {
              }
         }
     }
+        System.out.println(totalLoop);
         return words;
     }
 
-    public static void selectionSortWordList(ArrayList<String> words) {
-    
+    public static ArrayList<String> selectionSortWordList(ArrayList<String> words) {
+        int totalLoop = 0;
+        for (int i = 0; i < words.size(); i ++) {
+            for (int j = i; j < words.size(); j ++) {
+               totalLoop++;
+                if (words.get(j).compareTo(words.get(i)) < 0 ) {
+                    String temp = words.get(i);
+                    words.set(i, words.get(j));
+                    words.set(j, temp);
+                }
+            }
+           }
+           System.out.println(totalLoop);
+        return words;
     }
 
     public static ArrayList<String> loadWordsInto(ArrayList<String> wordList) {
